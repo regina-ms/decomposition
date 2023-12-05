@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import { faker } from '@faker-js/faker';
 import './App.css';
+import MainNews from './components/MainNews/MainNews';
+import News from './components/News/News';
+import NewsList from './components/NewsList/NewsList';
+import Search from './components/Search/Search';
+import Banner from './components/Banner/Banner';
+import TabList from './components/TabList/TabList';
+import { tabs } from './datas&types';
+import Tab from './components/Tab/Tab';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <News>
+        <NewsList />
+        <MainNews />
+      </News>
+      <Search />
+      <Banner link={faker.internet.url()} img={faker.image.urlLoremFlickr({ width: 1100, height: 100 })} />
+      <TabList>
+        {tabs.map((el,index) => (<Tab {...el} key={index} />))}
+      </TabList>
     </div>
   );
 }
