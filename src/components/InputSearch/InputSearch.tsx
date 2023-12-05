@@ -7,10 +7,10 @@ import { fakerRU as faker } from '@faker-js/faker'
 
 export default function InputSearch() {
     const refInput = useRef<HTMLInputElement>(null);
-    const handlerClick = (e: any) => {
+    const handlerClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault()
-        if (refInput.current) {
-            refInput.current.value = e.target.textContent
+        if (refInput.current && e.currentTarget.textContent) {
+            refInput.current.value = e.currentTarget.textContent
         }
     }
     return (
